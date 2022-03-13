@@ -7,7 +7,7 @@ class Bot:
     def __init__(self, TOKEN, DATABASE):
         self.url = f'https://api.telegram.org/bot{TOKEN}/'
         self.database = DATABASE
-        self.webhook = f'{self.url}setWebhook?url=https://telegramwebhookapi.herokuapp.com'
+        self.webhook = f'{self.url}setWebhook?url=https://telegramwebhookapi.herokuapp.com/bot'
 
     def get_updates(self):
         r = requests.get(self.url + 'getUpdates')

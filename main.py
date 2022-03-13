@@ -16,7 +16,7 @@ app = FastAPI()
 async def home():
     return {'q': 'qwer'}
 
-@app.post('/')
+@app.post('/bot')
 async def bot_polling(request: Request):
     responce = await request.body()
     responce = responce.decode('utf-8')
