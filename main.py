@@ -13,7 +13,7 @@ import json
 app = FastAPI()
 
 @app.get('/add_user')
-async def add_user()
+async def home():
     return {'q': 'qwer'}
 
 @app.post('/')
