@@ -1,11 +1,11 @@
+#!/usr/bin/env python3
 from fastapi import FastAPI
 from fastapi import Query
 from fastapi import Request
 
-import uvicorn
-import json
 import os
-
+import json
+import uvicorn
 from messanger import bot
 from messanger import db
 from messanger import write_json
@@ -31,8 +31,6 @@ async def bot_polling(request: Request):
         text_message = False
     if text_message:
         running(chat_id, text, name)
-    # elif command:
-    #     comand(chat_id, text, name)
     return {"received_request_body": json_responce}
 
 @app.get('/add_user')
@@ -53,11 +51,8 @@ async def send_message(message: str = Query(None, min_length=1)):
         bot.send_message(i, message)
     return {'send message'}
 
-import uvicorn
 
-if __name__ == '__main__':
-    uvicorn.run("app.main:app",
-                host="0.0.0.0",
-                port=int(os.environ.get('PORT', 5000)),
-                reload=True,
-                )
+
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="127.0.0.1", port=int(os.environ.get('PORT', 8000)), log_level="info")

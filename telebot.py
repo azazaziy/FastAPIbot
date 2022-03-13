@@ -1,5 +1,6 @@
+#!/usr/bin/env python3
 import requests
-import json
+
 
 
 class Bot:
@@ -7,7 +8,7 @@ class Bot:
     def __init__(self, TOKEN, DATABASE):
         self.url = f'https://api.telegram.org/bot{TOKEN}/'
         self.database = DATABASE
-        self.webhook = f'{self.url}setWebhook?url=https://git.heroku.com/telegramwebhookapi.git'
+        self.webhook = f'{self.url}setWebhook?url=https://4db03e18e5bad0.lhrtunnel.link'
 
     def get_updates(self):
         r = requests.get(self.url + 'getUpdates')
