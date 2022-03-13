@@ -2,11 +2,16 @@ from fastapi import FastAPI
 from fastapi import Query
 from fastapi import Request
 
+import uvicorn
+import json
+import os
+
 from messanger import bot
 from messanger import db
 from messanger import write_json
 from messanger import running
-import json
+
+
 #heroku url
 #https://git.heroku.com/telegramwebhookapi.git
 app = FastAPI()
@@ -47,3 +52,12 @@ async def send_message(message: str = Query(None, min_length=1)):
     for i in users:
         bot.send_message(i, message)
     return {'send message'}
+
+import uvicorn
+
+if __name__ == '__main__':
+    uvicorn.run("app.main:app",
+                host="0.0.0.0",
+                port=int(os.environ.get('PORT', 5000)),
+                reload=True,
+                )
