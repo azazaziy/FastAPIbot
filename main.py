@@ -1,18 +1,13 @@
-#!/usr/bin/env python3
 from fastapi import FastAPI
 from fastapi import Query
 from fastapi import Request
-
-import json
 
 from messanger import bot
 from messanger import db
 from messanger import write_json
 from messanger import running
+import json
 
-
-#heroku url
-#https://git.heroku.com/telegramwebhookapi.git
 app = FastAPI()
 
 @app.get('/add_user')
@@ -34,7 +29,9 @@ async def bot_polling(request: Request):
         text_message = False
     if text_message:
         running(chat_id, text, name)
-    return {"received_request_body": 'оно бачит'}
+    # elif command:
+    #     comand(chat_id, text, name)
+    return {"received_request_body": json_responce}
 
 @app.get('/add_user')
 async def add_user(user_id: str = Query(None, min_length=8, max_length=10)):
@@ -53,5 +50,3 @@ async def send_message(message: str = Query(None, min_length=1)):
     for i in users:
         bot.send_message(i, message)
     return {'send message'}
-
-
