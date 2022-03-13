@@ -20,4 +20,3 @@ def message_checker(chat_id, text):
         return MESSAGES['unsub']
     else:
         return text[::-1]
-
