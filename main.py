@@ -2,6 +2,8 @@ from fastapi import FastAPI
 from fastapi import Query
 from fastapi import Request
 
+import asyncio
+
 from messanger import bot
 from messanger import db
 from messanger import write_json
@@ -35,12 +37,12 @@ async def bot_polling(request: Request):
 
 @app.get('/add_user')
 async def add_user(user_id: str = Query(None, min_length=8, max_length=10)):
-    await bot.add_sub(user_id)
+    bot.add_sub(user_id)
     return {'q': user_id}
 
 @app.get('/remove_subscriber')
 async def re_user(user_id: str = Query(None, min_length=8, max_length=10)):
-    await bot.remove_sub(user_id)
+    bot.remove_sub(user_id)
     return {'q': user_id}
 
 
