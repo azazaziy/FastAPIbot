@@ -3,9 +3,8 @@ from fastapi import FastAPI
 from fastapi import Query
 from fastapi import Request
 
-import os
 import json
-import uvicorn
+
 from messanger import bot
 from messanger import db
 from messanger import write_json
@@ -52,7 +51,3 @@ async def send_message(message: str = Query(None, min_length=1)):
     return {'send message'}
 
 
-
-
-# if __name__ == "__main__":
-#     uvicorn.run("main:app", host="127.0.0.1", port=int(os.environ.get('PORT', 8000)), log_level="info")

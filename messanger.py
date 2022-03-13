@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 from telebot import Bot
 from sqliter import SQLighter
 from messages import MESSAGES

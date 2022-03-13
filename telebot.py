@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import requests
 
 
@@ -8,7 +7,7 @@ class Bot:
     def __init__(self, TOKEN, DATABASE):
         self.url = f'https://api.telegram.org/bot{TOKEN}/'
         self.database = DATABASE
-        self.webhook = f'{self.url}setWebhook?url=https://4db03e18e5bad0.lhrtunnel.link'
+        self.webhook = f'{self.url}setWebhook?url=https://a06a98334e1a0c.lhrtunnel.link'
 
     def get_updates(self):
         r = requests.get(self.url + 'getUpdates')
