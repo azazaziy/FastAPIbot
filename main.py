@@ -31,7 +31,7 @@ async def bot_polling(request: Request):
         text_message = False
     if text_message:
         running(chat_id, text, name)
-    return {"received_request_body": json_responce}
+    return {"received_request_body": 'оно бачит'}
 
 @app.get('/add_user')
 async def add_user(user_id: str = Query(None, min_length=8, max_length=10)):
