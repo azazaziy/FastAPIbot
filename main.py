@@ -7,7 +7,8 @@ from messanger import db
 from messanger import write_json
 from messanger import running
 import json
-
+#heroku url
+#https://git.heroku.com/telegramwebhookapi.git
 app = FastAPI()
 
 @app.post('/')
