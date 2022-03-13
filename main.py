@@ -15,6 +15,10 @@ from messanger import running
 #https://git.heroku.com/telegramwebhookapi.git
 app = FastAPI()
 
+@app.post('/add_user')
+async def add_user()
+    return {'q': 'qwer'}
+
 @app.post('/')
 async def bot_polling(request: Request):
     responce = await request.body()
