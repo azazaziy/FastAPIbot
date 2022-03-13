@@ -15,7 +15,7 @@ from messanger import running
 #https://git.heroku.com/telegramwebhookapi.git
 app = FastAPI()
 
-@app.post('/add_user')
+@app.get('/add_user')
 async def add_user()
     return {'q': 'qwer'}
 
