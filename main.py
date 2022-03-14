@@ -23,6 +23,7 @@ async def bot_polling(request: Request):
     response = await request.body()
     response = response.decode('utf-8')
     json_response = json.loads(response)
+    chat_id = text = name = ' '
     try:
         chat_id = json_response['message']['chat']['id']
         text = json_response['message']['text']
@@ -32,6 +33,7 @@ async def bot_polling(request: Request):
         text_message = False
     if text_message:
         state = db.check_state(chat_id)
+        print(f'chat id: {chat_id}\tstate={state}')
         if state == 0:
             message_handler(chat_id, text, name)
         elif state == 1:
