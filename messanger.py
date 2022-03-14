@@ -24,5 +24,11 @@ def first_state(chat_id, text):
         bot.send_message(chat_id, answer)
         bot.send_message(chat_id, MESSAGES['echo'])
 
+def unsub_echo(chat_id, text):
+    if text in '/weather /games':
+        bot.send_message(chat_id, MESSAGES['unsub'])
+    else:
+        bot.send_message(chat_id, text[::-1])
+
 def creating_message(chat_id, state):
     bot.send_message(chat_id, MESSAGES[state])

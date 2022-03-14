@@ -7,6 +7,7 @@ import json
 from messanger import message_handler
 from messanger import creating_message
 from messanger import first_state
+from messanger import unsub_echo
 from initializations import db
 from initializations import bot
 
@@ -32,16 +33,15 @@ async def bot_polling(request: Request):
     except:
         text_message = False
     if text_message:
-        state = db.check_state(chat_id)
-        print('state=',state)
-        try:
+        if db.user_exist(chat_id):
+            state = db.check_state(chat_id)
             state = state[0]
-        except:
-            state = 0
-        if state == 0:
-            message_handler(chat_id, text, name)
-        elif state == 1:
-            first_state(chat_id, text)
+            if state == 0:
+                message_handler(chat_id, text, name)
+            elif state == 1:
+                first_state(chat_id, text)
+        else:
+            unsub_echo(chat_id,text)
     return {"received_request_body": json_response}
 
 

@@ -28,6 +28,12 @@ class Postgresser:
             else:
                 return 'not existed user'
 
+    def user_exist(self, user_id):
+        with self.connection:
+            self.cursor.execute(f"SELECT user_id FROM users WHERE user_id = {user_id}")
+            result = self.cursor.fetchone()
+            return bool(len(result))
+
 
     def return_users(self):
         with self.connection:
