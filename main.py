@@ -3,8 +3,8 @@ from fastapi import Query
 from fastapi import Request
 
 
-from messanger import bot
-from messanger import db
+from qwerty import bot
+from qwerty import db
 from messanger import write_json
 from messanger import running
 import json
@@ -48,6 +48,5 @@ async def re_u(user_id: str = Query(None, min_length=8, max_length=10)):
 async def send_message(message: str = Query(None, min_length=1)):
     users = bot.return_users_id()
     for i in users:
-        # bot.send_message(i, message)
-        print(i)
-    return {'send message':message}
+        bot.send_message(i, message)
+    return {'send message': users}

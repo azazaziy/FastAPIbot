@@ -1,5 +1,8 @@
 import requests
-from messanger import db
+from postgresser import Postgresser
+
+db = Postgresser('postgres://vazkibwucrvyqe:3992c06da77a8456a1916565b80839b38c43ce7924d84a9327d8caa0fb12f7e8@ec2-176-34-105-15.eu-west-1.compute.amazonaws.com:5432/d6lc9s12vi2h2o')
+
 
 
 class Bot:
@@ -8,9 +11,6 @@ class Bot:
         self.url = f'https://api.telegram.org/bot{TOKEN}/'
         self.webhook = f'{self.url}setWebhook?url=https://telegramwebhookapi.herokuapp.com/bot'
 
-    def get_updates(self):
-        r = requests.get(self.url + 'getUpdates')
-        return r.json()
 
     def send_message(self, chat_id, text='simple_text'):
         message = {'chat_id': chat_id, 'text': text}
@@ -27,5 +27,3 @@ class Bot:
     def return_users_id(self):
         temp = db.return_users()
         return [x for t in temp for x in t]
-
-# curl -X "POST" "https://api.telegram.org/bot1139412331:AAHH5phrKI8YLOtKPYm9VcwIpZUL23PpWIg/setWebhook" -d '{"url": "https://36f10ccf8c4b91.lhrtunnel.link"}' -H 'Content-Type: application/json; charset=utf-8'
