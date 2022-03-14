@@ -35,7 +35,9 @@ async def bot_polling(request: Request):
         text_message = False
 
     if text_message:
-        if db.user_exist(chat_id):
+        if text == '/sub':
+            message_handler(chat_id, text, name)
+        elif db.user_exist(chat_id):
             state = db.check_state(chat_id)
             state = state[0]
             if state == 0:
