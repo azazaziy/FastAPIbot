@@ -21,19 +21,21 @@ async def home():
 async def bot_polling(request: Request):
     response = await request.body()
     response = response.decode('utf-8')
-    json_responce = json.loads(response)
-    print(json_responce)
+    json_response = json.loads(response)
     try:
-        chat_id = json_responce['message']['chat']['id']
-        text = json_responce['message']['text']
-        name = json_responce['message']['chat']['first_name'] #' ' + json_responce['message']['chat']['last_name']
+        chat_id = json_response['message']['chat']['id']
+        text = json_response['message']['text']
+        name = json_response['message']['chat']['first_name'] #' ' + json_responce['message']['chat']['last_name']
         text_message = True
     except:
         text_message = False
-    print(f'chat id\t{chat_id}\nmessage:\t{text}')
     if text_message:
-        message_handler(chat_id, text, name)
-    return {"received_request_body": json_responce}
+        state = db.check_state(chat_id)
+        if state == 0:
+            message_handler(chat_id, text, name)
+        elif state == 1:
+            pass
+    return {"received_request_body": json_response}
 
 
 @app.get('/add_user')

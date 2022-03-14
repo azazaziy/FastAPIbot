@@ -35,4 +35,16 @@ class Postgresser:
             temp = self.cursor.fetchall()
             return [x for t in temp for x in t]
 
+    def set_state(self, user_id, state):
+        with self.connection:
+            self.cursor.execute("UPDATE users SET state = %s WHERE user_id = %s", (state, user_id))
+            self.connection.commit()
+
+
+    def check_state(self, user_id):
+        with self.connection:
+            self.cursor.execute(f"SELECT state FROM users WHERE user_id = {user_id}")
+            state = self.cursor.fetchone()
+            return state
+
 

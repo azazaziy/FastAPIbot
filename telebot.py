@@ -1,5 +1,5 @@
 import requests
-
+from initializations import db
 
 class Bot:
 
@@ -7,10 +7,11 @@ class Bot:
         self.url = f'https://api.telegram.org/bot{TOKEN}/'
         self.API_URL = WEBHOOK
 
-    def send_message(self, chat_id, text='simple_text'):
+    def send_message(self, chat_id, text='simple_text', state=0):
         message = {'chat_id': chat_id, 'text': text}
         url = self.url + 'sendMessage'
         response = requests.post(url, json=message)
+        db.set_state(chat_id, state)
         return response.json()
 
     def add_u(self, user_id):

@@ -10,6 +10,7 @@ DB_URI = 'postgres://hpuuhumbzapiwo:47e8f7d2dd53f6dd86c58288f824433b9b602e18654b
 TOKEN = '1139412331:AAHH5phrKI8YLOtKPYm9VcwIpZUL23PpWIg'
 # WEBHOOK = 'https://19b201caf3a964.lhrtunnel.link'
 WEBHOOK = 'https://telegramwebhookapi.herokuapp.com/'
+OWM_API = '14b1bec4cd92422105f28fd0345e3045'
 
 #https://api.telegram.org/bot1139412331:AAHH5phrKI8YLOtKPYm9VcwIpZUL23PpWIg/setWebhook?url=https://19b201caf3a964.lhrtunnel.link/bot
 #https://api.telegram.org/bot1139412331:AAHH5phrKI8YLOtKPYm9VcwIpZUL23PpWIg/setWebhook?url=https://telegramwebhookapi.herokuapp.com/bot
