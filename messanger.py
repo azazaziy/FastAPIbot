@@ -22,6 +22,7 @@ def first_state(chat_id, text):
         bot.send_message(chat_id, answer, state=1)
     else:
         bot.send_message(chat_id, answer)
+        bot.send_message(chat_id, MESSAGES['echo'])
 
 def creating_message(chat_id, state):
     bot.send_message(chat_id, MESSAGES[state])
