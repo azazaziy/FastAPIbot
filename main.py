@@ -22,6 +22,7 @@ async def bot_polling(request: Request):
     response = await request.body()
     response = response.decode('utf-8')
     json_responce = json.loads(response)
+    print(json_responce)
     try:
         chat_id = json_responce['message']['chat']['id']
         text = json_responce['message']['text']
