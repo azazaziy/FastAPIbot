@@ -21,7 +21,7 @@ async def bot_polling(request: Request):
     json_responce = json.loads(responce)
     write_json(json_responce)
     try:
-        chat_id = int(json_responce['message']['chat']['id'])
+        chat_id = json_responce['message']['chat']['id']
         text = json_responce['message']['text']
         name = json_responce['message']['chat']['first_name'] + ' ' + json_responce['message']['chat']['last_name']
         text_message = True
@@ -34,13 +34,13 @@ async def bot_polling(request: Request):
     return {"received_request_body": json_responce}
 
 @app.get('/add_user')
-async def add_user(user_id: str = Query(None, min_length=8, max_length=10)):
-    bot.add_u(user_id)
+async def add_u(user_id: str = Query(None, min_length=8, max_length=10)):
+    db.add_user(user_id)
     return {'q': user_id}
 
 @app.get('/remove_user')
-async def re_user(user_id: str = Query(None, min_length=8, max_length=10)):
-    bot.remove_u(user_id)
+async def re_u(user_id: str = Query(None, min_length=8, max_length=10)):
+    db.remove_user(user_id)
     return {'q': user_id}
 
 
