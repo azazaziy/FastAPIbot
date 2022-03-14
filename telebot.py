@@ -5,7 +5,7 @@ class Bot:
 
     def __init__(self, TOKEN, WEBHOOK):
         self.url = f'https://api.telegram.org/bot{TOKEN}/'
-        self.webhook = f'{self.url}setWebhook?url={WEBHOOK}/bot'
+        # self.webhook = f'{self.url}setWebhook?url={WEBHOOK}/bot'
         self.API_URL = WEBHOOK
 
     def send_message(self, chat_id, text='simple_text'):
@@ -15,8 +15,11 @@ class Bot:
         return response.json()
 
     def add_u(self, user_id):
-        requests.get(f'{self.API_URL}/add_user?user_id={user_id}')
+        url = f'{self.API_URL}/add_user?user_id={user_id}'
+        print(url)
+        requests.get(url)
+        print('succsess connect')
 
     def remove_u(self, user_id):
-        requests.get(f'{self.API_URL}/remove_user?user_id={user_id}')
+        return requests.get(f'{self.API_URL}/remove_user?user_id={user_id}')
 
