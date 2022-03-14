@@ -29,6 +29,7 @@ async def bot_polling(request: Request):
         text_message = True
     except:
         text_message = False
+    print(f'chat id\t{chat_id}\nmessage:\t{text}')
     if text_message:
         message_handler(chat_id, text, name)
     return {"received_request_body": json_responce}
