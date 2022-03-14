@@ -6,6 +6,7 @@ import json
 
 from messanger import message_handler
 from messanger import creating_message
+from messanger import first_state
 from initializations import db
 from initializations import bot
 
@@ -34,7 +35,7 @@ async def bot_polling(request: Request):
         if state == 0:
             message_handler(chat_id, text, name)
         elif state == 1:
-            pass
+            first_state(chat_id, text)
     return {"received_request_body": json_response}
 
 
