@@ -1,5 +1,7 @@
 import requests
-from initializations import db
+from postgresser import Postgresser
+from config import DB_URI
+db = Postgresser(DB_URI)
 
 class Bot:
 
