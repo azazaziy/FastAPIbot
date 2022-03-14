@@ -26,7 +26,7 @@ async def bot_polling(request: Request):
     try:
         chat_id = json_responce['message']['chat']['id']
         text = json_responce['message']['text']
-        name = json_responce['message']['chat']['first_name'] + ' ' + json_responce['message']['chat']['last_name']
+        name = json_responce['message']['chat']['first_name'] #' ' + json_responce['message']['chat']['last_name']
         text_message = True
     except:
         text_message = False
