@@ -5,6 +5,7 @@ from fastapi import Request
 import json
 
 from messanger import message_handler
+from messanger import creating_message
 from initializations import db
 from initializations import bot
 
@@ -29,31 +30,27 @@ async def bot_polling(request: Request):
     except:
         text_message = False
     if text_message:
-        print(f'message text:\t{text}\nfrom:\t{chat_id}')
         message_handler(chat_id, text, name)
     return {"received_request_body": json_responce}
 
 
 @app.get('/add_user')
 async def add_u(user_id: str = Query(None, min_length=8, max_length=10)):
-    print('adding user:\t', user_id)
     result = db.add_user(user_id)
-    print(result)
+    creating_message(user_id, result)
     return {'user added': f'user id:\t{user_id}'}
 
 
 @app.get('/remove_user')
 async def re_u(user_id: str = Query(None, min_length=8, max_length=10)):
-    print('removing user:\t', user_id)
     result = db.remove_user(user_id)
-    print(result)
+    creating_message(user_id, result)
     return {'user removed': f'user id:\t{user_id}'}
 
 
 @app.get('/send_message')
 async def send_message(message: str = Query(None, min_length=1)):
-    users = bot.return_users_id()
+    users = db.return_users()
     for i in users:
         bot.send_message(i, message)
-        print('message send to\t', i)
     return {'send message': users}

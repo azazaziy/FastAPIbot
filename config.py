@@ -12,3 +12,4 @@ TOKEN = '1139412331:AAHH5phrKI8YLOtKPYm9VcwIpZUL23PpWIg'
 WEBHOOK = 'https://telegramwebhookapi.herokuapp.com/'
 
 #https://api.telegram.org/bot1139412331:AAHH5phrKI8YLOtKPYm9VcwIpZUL23PpWIg/setWebhook?url=https://19b201caf3a964.lhrtunnel.link/bot
+#https://api.telegram.org/bot1139412331:AAHH5phrKI8YLOtKPYm9VcwIpZUL23PpWIg/setWebhook?url=https://telegramwebhookapi.herokuapp.com/bot
