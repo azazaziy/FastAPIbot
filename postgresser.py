@@ -15,7 +15,6 @@ class Postgresser:
     def remove_user(self, user_id):
         with self.connection:
             self.cursor.execute(f"DELETE FROM users WHERE user_id = {user_id}")
-
             self.connection.commit()
 
 
