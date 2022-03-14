@@ -32,8 +32,7 @@ class Postgresser:
         with self.connection:
             self.cursor.execute(f"SELECT user_id FROM users WHERE user_id = {user_id}")
             result = self.cursor.fetchone()
-            return bool(len(result))
-
+            return bool(result)
 
     def return_users(self):
         with self.connection:

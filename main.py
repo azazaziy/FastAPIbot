@@ -28,10 +28,12 @@ async def bot_polling(request: Request):
     try:
         chat_id = json_response['message']['chat']['id']
         text = json_response['message']['text']
-        name = json_response['message']['chat']['first_name'] #' ' + json_responce['message']['chat']['last_name']
+        name = json_response['message']['chat']['first_name']  # ' ' + json_responce['message']['chat']['last_name']
         text_message = True
+
     except:
         text_message = False
+
     if text_message:
         if db.user_exist(chat_id):
             state = db.check_state(chat_id)
@@ -41,7 +43,7 @@ async def bot_polling(request: Request):
             elif state == 1:
                 first_state(chat_id, text)
         else:
-            unsub_echo(chat_id,text)
+            unsub_echo(chat_id, text)
     return {"received_request_body": json_response}
 
 
