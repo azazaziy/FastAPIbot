@@ -2,7 +2,6 @@ from fastapi import FastAPI
 from fastapi import Query
 from fastapi import Request
 
-import asyncio
 
 from messanger import bot
 from messanger import db
@@ -11,7 +10,6 @@ from messanger import running
 import json
 
 app = FastAPI()
-
 @app.get('/')
 async def home():
     return {'q': 'qwer'}
@@ -37,18 +35,18 @@ async def bot_polling(request: Request):
 
 @app.get('/add_user')
 async def add_user(user_id: str = Query(None, min_length=8, max_length=10)):
-    bot.add_sub(user_id)
+    bot.add_user(user_id)
     return {'q': user_id}
 
-@app.get('/remove_subscriber')
+@app.get('/remove_user')
 async def re_user(user_id: str = Query(None, min_length=8, max_length=10)):
-    bot.remove_sub(user_id)
+    bot.remove_user(user_id)
     return {'q': user_id}
 
 
 @app.get('/send_mesage')
 async def send_message(message: str = Query(None, min_length=1)):
-    users = [x for t in db .return_users() for x in t]
+    users = [x for t in bot.return_users_id() for x in t]
     for i in users:
         bot.send_message(i, message)
-    return {'send message'}
+    return {'send message':message}

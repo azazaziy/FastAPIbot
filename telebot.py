@@ -19,10 +19,13 @@ class Bot:
         response = requests.post(url, json=message)
         return response.json()
 
-    def add_sub(self, chat_id):
+    def add_user(self, chat_id):
         self.database.add_subscriber(chat_id)
 
-    def remove_sub(self, chat_id):
+    def remove_user(self, chat_id):
         self.database.remove_subscriber(chat_id)
+
+    def return_users_id(self):
+        self.database.return_users()
 
 # curl -X "POST" "https://api.telegram.org/bot1139412331:AAHH5phrKI8YLOtKPYm9VcwIpZUL23PpWIg/setWebhook" -d '{"url": "https://36f10ccf8c4b91.lhrtunnel.link"}' -H 'Content-Type: application/json; charset=utf-8'
