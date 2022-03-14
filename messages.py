@@ -1,4 +1,4 @@
 MESSAGES = {
+    'existed_user': 'Вы и так подписаны',
 
-    'already_sub': 'Вы и так подписаны'
 }

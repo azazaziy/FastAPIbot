@@ -14,10 +14,14 @@ def write_json(data, file_name='answer.json'):  # ЗАПИСЬ JSON
 
 def running(chat_id, text, name):
     if text[0] == '/':
-        bot.send_message(chat_id, COMMANDS[text].format(NAME=name))
         if text == '/sub':
-            bot.add_u(chat_id)
+            check = bot.add_u(chat_id)
+            if check == 'success':
+                bot.send_message(chat_id, COMMANDS[text].format(NAME=name))
+            elif check == 'existed_user':
+                bot.send_message(chat_id, MESSAGES['existed_user'])
         elif text == '/unsub':
             bot.remove_u(chat_id)
+
     else:
         bot.send_message(chat_id, text[::-1])

@@ -8,9 +8,12 @@ class Postgresser:
 
     def add_user(self, user_id):
         with self.connection:
-            if not self.cursor.execute(f"SELECT user_id FROM users WHERE user_id = {user_id}"):
+            if self.cursor.execute(f"SELECT user_id FROM users WHERE user_id = {user_id}" != None):
                 self.cursor.execute("INSERT INTO users (user_id, status) VALUES(%s, %s)", (user_id, True))
                 self.connection.commit()
+                return 'success'
+            else:
+                return 'existed_user'
 
     def remove_user(self, user_id):
         with self.connection:

@@ -19,7 +19,7 @@ class Bot:
         return response.json()
 
     def add_u(self, chat_id):
-        db.add_user(chat_id)
+        return db.add_user(chat_id)
 
     def remove_u(self, chat_id):
         db.remove_user(chat_id)
