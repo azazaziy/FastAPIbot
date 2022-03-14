@@ -1,18 +1,10 @@
 from messages import MESSAGES
 from comands import COMMANDS
-import json
-
-from qwerty import bot
+from initializations import bot
 
 
 
-
-def write_json(data, file_name='answer.json'):  # ЗАПИСЬ JSON
-    with open(file_name, 'w') as f:
-        json.dump(data, f, indent=2, ensure_ascii=False)
-
-
-def running(chat_id, text, name):
+def message_handler(chat_id, text, name):
     if text[0] == '/':
         if text == '/sub':
             check = bot.add_u(chat_id)
