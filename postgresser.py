@@ -9,7 +9,7 @@ class Postgresser:
     def add_user(self, user_id):
         with self.connection:
             if not self.cursor.execute(f"SELECT `user_id` FROM `users` WHERE user_id = ?",(user_id,)):
-                self.cursor.execute(f"INSERT INTO `users` (`user_id`, `status`) VALUES(?,?)", (user_id,True)))
+                self.cursor.execute(f"INSERT INTO `users` (`user_id`, `status`) VALUES(?,?)", (user_id,True))
                 self.connection.commit()
 
     def remove_user(self, user_id):
