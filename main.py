@@ -33,6 +33,7 @@ async def bot_polling(request: Request):
         text_message = False
     if text_message:
         state = db.check_state(chat_id)
+        print('state=',state)
         state = state[0]
         if state == 0:
             message_handler(chat_id, text, name)
