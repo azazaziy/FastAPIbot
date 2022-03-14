@@ -20,10 +20,10 @@ class Bot:
         return response.json()
 
     def add_user(self, chat_id):
-        self.database.add_subscriber(chat_id)
+        self.database.add_user(chat_id)
 
     def remove_user(self, chat_id):
-        self.database.remove_subscriber(chat_id)
+        self.database.remove_user(chat_id)
 
     def return_users_id(self):
         self.database.return_users()
