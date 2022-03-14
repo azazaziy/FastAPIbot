@@ -26,6 +26,7 @@ class Bot:
         self.database.remove_user(chat_id)
 
     def return_users_id(self):
-        self.database.return_users()
+        temp = self.database.return_users()
+        return [x for t in temp for x in t]
 
 # curl -X "POST" "https://api.telegram.org/bot1139412331:AAHH5phrKI8YLOtKPYm9VcwIpZUL23PpWIg/setWebhook" -d '{"url": "https://36f10ccf8c4b91.lhrtunnel.link"}' -H 'Content-Type: application/json; charset=utf-8'

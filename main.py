@@ -46,7 +46,8 @@ async def re_user(user_id: str = Query(None, min_length=8, max_length=10)):
 
 @app.get('/send_mesage')
 async def send_message(message: str = Query(None, min_length=1)):
-    users = [x for t in bot.return_users_id() for x in t]
+    users = bot.return_users_id()
     for i in users:
-        bot.send_message(i, message)
+        # bot.send_message(i, message)
+        print(i)
     return {'send message':message}
