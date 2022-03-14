@@ -35,12 +35,12 @@ async def bot_polling(request: Request):
 
 @app.get('/add_user')
 async def add_user(user_id: str = Query(None, min_length=8, max_length=10)):
-    bot.add_user(user_id)
+    bot.add_u(user_id)
     return {'q': user_id}
 
 @app.get('/remove_user')
 async def re_user(user_id: str = Query(None, min_length=8, max_length=10)):
-    bot.remove_user(user_id)
+    bot.remove_u(user_id)
     return {'q': user_id}
 
 

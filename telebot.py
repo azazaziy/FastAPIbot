@@ -19,10 +19,10 @@ class Bot:
         response = requests.post(url, json=message)
         return response.json()
 
-    def add_user(self, chat_id):
+    def add_u(self, chat_id):
         self.database.add_user(chat_id)
 
-    def remove_user(self, chat_id):
+    def remove_u(self, chat_id):
         self.database.remove_user(chat_id)
 
     def return_users_id(self):
