@@ -8,7 +8,7 @@ class Postgresser:
 
     def add_user(self, user_id):
         with self.connection:
-            if self.cursor.execute(f"SELECT user_id FROM users WHERE user_id = {user_id}" != None):
+            if self.cursor.execute(f"SELECT user_id FROM users WHERE user_id = {user_id}") != None:
                 self.cursor.execute("INSERT INTO users (user_id, status) VALUES(%s, %s)", (user_id, True))
                 self.connection.commit()
                 return 'success'
@@ -25,6 +25,6 @@ class Postgresser:
         with self.connection:
             self.cursor.execute("SELECT user_id FROM users")
             temp = self.cursor.fetchall()
-            return temp
+            return [x for t in temp for x in t]
 
 

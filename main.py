@@ -8,13 +8,13 @@ from messanger import message_handler
 from initializations import db
 from initializations import bot
 
-
-
-
 app = FastAPI()
+
+
 @app.get('/')
 async def home():
     return {'ОГО': 'ОНО РАБОТАЕТ'}
+
 
 @app.post('/bot')
 async def bot_polling(request: Request):
@@ -33,10 +33,12 @@ async def bot_polling(request: Request):
         message_handler(chat_id, text, name)
     return {"received_request_body": json_responce}
 
+
 @app.get('/add_user')
 async def add_u(user_id: str = Query(None, min_length=8, max_length=10)):
     db.add_user(user_id)
     return {'user added': f'user id:\t{user_id}'}
+
 
 @app.get('/remove_user')
 async def re_u(user_id: str = Query(None, min_length=8, max_length=10)):
