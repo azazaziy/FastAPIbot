@@ -21,7 +21,7 @@ async def bot_polling(request: Request):
     json_responce = json.loads(responce)
     write_json(json_responce)
     try:
-        chat_id = json_responce['message']['chat']['id']
+        chat_id = int(json_responce['message']['chat']['id'])
         text = json_responce['message']['text']
         name = json_responce['message']['chat']['first_name'] + ' ' + json_responce['message']['chat']['last_name']
         text_message = True
