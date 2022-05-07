@@ -12,7 +12,12 @@ class Bot:
     def send_message(self, chat_id, text='simple_text', state=0):
         message = {'chat_id': chat_id, 'text': text}
         url = self.url + 'sendMessage'
-        response = requests.post(url, json=message)
+        opponent_keyboard = {
+            "keyboard": {"text": "1", "text": "2"},
+            "resize_keyboard": True,
+            "one_time_keyboard": True,
+        }
+        response = requests.post(url, json=message+opponent_keyboard)
         db.set_state(chat_id, state)
         return response.json()
 
@@ -21,4 +26,7 @@ class Bot:
 
     def remove_u(self, user_id):
         requests.get(f'{self.API_URL}remove_user?user_id={user_id}')
+
+
+
 
