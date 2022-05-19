@@ -3,8 +3,8 @@ from postgresser import Postgresser
 from config import DB_URI
 db = Postgresser(DB_URI)
 
-class Bot:
 
+class Bot:
     def __init__(self, TOKEN, WEBHOOK):
         self.url = f'https://api.telegram.org/bot{TOKEN}/'
         self.API_URL = WEBHOOK
