@@ -22,10 +22,10 @@ class Bot:
         return response.json()
 
     def add_u(self, user_id):
-        requests.get(f'{self.API_URL}add_user?user_id={user_id}&api_request=False')
+        requests.get(f'{self.API_URL}add_user?user_id={user_id}')
 
     def remove_u(self, user_id):
-        requests.get(f'{self.API_URL}remove_user?user_id={user_id}&api_request=False')
+        requests.get(f'{self.API_URL}remove_user?user_id={user_id}')
 
 
 
